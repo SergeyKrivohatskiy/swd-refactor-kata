@@ -1,13 +1,26 @@
 package task3;
 
 public class Question {
-  public final String q, answ1, answ2, answ3, answ4;
+    public final String question;
+    public final String[] answers;
+    private final int correct;
 
-  public Question(String q, String answ4, String answ3, String answ2, String answ1) {
-    this.q = q;
-    this.answ4 = answ4;
-    this.answ3 = answ3;
-    this.answ2 = answ2;
-    this.answ1 = answ1;
-  }
+    public Question(String q, String a1, String a2, String a3, String a4,
+	    int correct) {
+	this.question = q;
+	answers = new String[4];
+	answers[0] = a1;
+	answers[1] = a2;
+	answers[2] = a3;
+	answers[3] = a4;
+	if (correct >= answers.length || correct < 0) {
+	    throw new IllegalArgumentException(
+		    "Correct should be in range from 0 to answers count - 1");
+	}
+	this.correct = correct;
+    }
+
+    public boolean checkAnswer(int answer) {
+	return correct == answer;
+    }
 }
