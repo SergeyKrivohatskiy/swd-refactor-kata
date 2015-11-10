@@ -25,7 +25,7 @@ public class IndexOfAnyTest {
     }
 
     @Test
-    public void goodResultTest() {
+    public void twoCharsFoundTest() {
 	assertEquals(0, IndexOfAny.indexOfAny("120", SEARCH_CHARS));
 	assertEquals(1, IndexOfAny.indexOfAny("012", SEARCH_CHARS));
 	assertEquals(0, IndexOfAny.indexOfAny("230", SEARCH_CHARS));
@@ -33,10 +33,10 @@ public class IndexOfAnyTest {
     }
 
     @Test
-    public void badResultTest() {
-	assertEquals(0, IndexOfAny.indexOfAny("120", SEARCH_CHARS));
-	assertEquals(1, IndexOfAny.indexOfAny("012", SEARCH_CHARS));
-	assertEquals(0, IndexOfAny.indexOfAny("230", SEARCH_CHARS));
-	assertEquals(1, IndexOfAny.indexOfAny("023", SEARCH_CHARS));
+    public void notFoundTest() {
+	assertEquals(-1, IndexOfAny.indexOfAny("100", SEARCH_CHARS));
+	assertEquals(-1, IndexOfAny.indexOfAny("020", SEARCH_CHARS));
+	assertEquals(-1, IndexOfAny.indexOfAny("100", SEARCH_CHARS));
+	assertEquals(-1, IndexOfAny.indexOfAny("210", SEARCH_CHARS));
     }
 }

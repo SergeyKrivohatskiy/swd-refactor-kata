@@ -17,13 +17,13 @@ public class AbbreviateTest {
     }
 
     @Test
-    public void normalTest() {
+    public void abbreviatedTest() {
 	assertEquals("1...", Abbreviate.abbreviate("12345678", 4));
 	assertEquals("1234...", Abbreviate.abbreviate("12345678", 7));
     }
 
     @Test
-    public void bigWidthTest() {
+    public void enoughtWidthForStringTest() {
 	assertEquals("12345678", Abbreviate.abbreviate("12345678", 8));
 	assertEquals("12345678", Abbreviate.abbreviate("12345678", 12346));
     }

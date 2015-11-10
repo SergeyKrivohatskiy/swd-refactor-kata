@@ -16,12 +16,12 @@ import org.junit.Test;
  */
 public class GameAndQuestionTest {
     @Test(expected = IllegalArgumentException.class)
-    public void questionExpectedExceptionTest() {
+    public void questionInvalidCorrectTest() {
 	Question q = new Question("q", "a1", "a2", "a3", "a4", -1);
     }
 
     @Test
-    public void questionTest() {
+    public void questionCheckAnswerTest() {
 	Question q = new Question("q", "a1", "a2", "a3", "a4", 1);
 	assertFalse(q.checkAnswer(0));
 	assertTrue(q.checkAnswer(1));
@@ -30,13 +30,13 @@ public class GameAndQuestionTest {
     }
 
     @Test
-    public void emptyGameTest() {
+    public void emptyGameReturnsNoQuestionsTest() {
 	Game game = new Game();
 	assertNull(game.getNextQuestion());
     }
 
     @Test
-    public void gameTest() {
+    public void gameWithSingleQuestionTest() {
 	Game game = new Game();
 	Question q = new Question("q", "a1", "a2", "a3", "a4", 1);
 	game.addQuestion(q);
