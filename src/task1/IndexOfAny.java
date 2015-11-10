@@ -1,36 +1,33 @@
 package task1;
 
 public class IndexOfAny {
-  /**
-   * Write covering tests + refactor code.
-   * In this task signature should stay the same
-   */
-  public static int indexOfAny(String str, char[] searchChars) {
-    if(!str.isEmpty() && searchChars.length > 0) {
-      int csLen = str.length();
-      int csLast = csLen - 1;
-      int searchLen = searchChars.length;
-      int searchLast = searchLen - 1;
+    /**
+     * Write covering tests + refactor code. In this task signature should stay
+     * the same
+     */
+    public static int indexOfAny(String str, char[] searchChars) {
+	if (str.isEmpty() || searchChars.length == 0) {
+	    return -1;
+	}
 
-      for(int i = 0; i < csLen; ++i) {
-        char ch = str.charAt(i);
+	for (int strIdx = 0; strIdx < str.length(); ++strIdx) {
+	    char ch = str.charAt(strIdx);
 
-        for(int j = 0; j < searchLen; ++j) {
-          if(searchChars[j] == ch) {
-            if(i >= csLast || j >= searchLast) {
-              return i;
-            }
+	    for (int searchIdx = 0; searchIdx < searchChars.length; ++searchIdx) {
+		if (searchChars[searchIdx] != ch) {
+		    continue;
+		}
+		if (strIdx == str.length() - 1 || searchIdx == searchChars.length - 1) {
+		    return strIdx;
+		}
 
-            if(searchChars[j + 1] == str.charAt(i + 1)) {
-              return i;
-            }
-          }
-        }
-      }
+		if (searchChars[searchIdx + 1] == str.charAt(strIdx + 1)) {
+		    return strIdx;
+		}
 
-      return -1;
-    } else {
-      return -1;
+	    }
+	}
+
+	return -1;
     }
-  }
 }
